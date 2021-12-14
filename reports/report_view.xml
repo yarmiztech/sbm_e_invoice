@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="invoice_format_layout">
+    <t t-call="web.html_container">
+<t t-if="not o" t-set="o" t-value="doc"/>
+<t t-if="not company">
+<!--  Multicompany  -->
+<t t-if="company_id">
+<t t-set="company" t-value="company_id"/>
+</t>
+<t t-elif="o and 'company_id' in o">
+<t t-set="company" t-value="o.company_id.sudo()"/>
+</t>
+<t t-else="else">
+<t t-set="company" t-value="res_company"/>
+</t>
+</t>
+<div class="header" t-att-style="report_header_style">
+    <div class="row">
+<!--         <div class="col-5" style="text-align:left;">-->
+<!--            <h6 style="font-size:20px;"><b>Salman Binsaleh Steel Products Factory</b> </h6>-->
+<!--&lt;!&ndash;            <h6>GSTIN: <t t-esc="company.vat"/>  </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/>,<t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/>,<t t-esc="company.state_id.name"/>-<t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>t:<t t-esc="company.phone"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.email"/> </h6>&ndash;&gt;-->
+
+
+
+<!--        </div>-->
+<!--<div class="col-2" align="left">-->
+
+<!--       <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:90px;max-width:90px;align:center;" alt="Logo"/>-->
+<!--&lt;!&ndash;                <h6 style="border: 1px solid black;&ndash;&gt;-->
+<!--  padding: 50px;-->
+<!--  border-radius: 15px;padding:20px;">DELIVERY NOTE:<br></br>مذكرة تسليم:</h6>-->
+
+    </div>
+
+<!--        <div class="col-5" style="text-align:right;">-->
+<!--&lt;!&ndash;            <h6 style="font-size:20px;"><b>مصنع سلمان بن صالح للمنتجات الحديدية</b> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <h6 style="font-size:20px;"><b>Knaled Nayef Al-Shamri General Cont.</b>  </h6>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/>,<t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/>,<t t-esc="company.state_id.name"/>-<t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>t:<t t-esc="company.phone"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.email"/> </h6>&ndash;&gt;-->
+
+
+
+<!--        </div>-->
+<!--    </div>-->
+<!--      <hr style="width: 100%;-->
+<!--        height: 1px;-->
+<!--        margin-left: auto;-->
+<!--        margin-right: auto;-->
+<!--        background-color:#94271c;"/>-->
+<!--    <br></br>-->
+<!--    <hr style="width: 100%;-->
+<!--        height: 0.5px;-->
+<!--        margin-left: auto;-->
+<!--        margin-right: auto;-->
+<!--        background-color:#ffffff;"/>-->
+
+<!--     <hr style="width: 100%;-->
+<!--        height: 0.5px;-->
+<!--        margin-left: auto;-->
+<!--        margin-right: auto;-->
+<!--        background-color:#94271c;"/>-->
+
+<!--&lt;!&ndash;        <div class="col-6" style="text-align:right;">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.state_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--&lt;!&ndash;         <div class="col-4" style="text-align:left;">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>CIN: </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>GSTIN: <t t-esc="company.vat"/>  </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/>,<t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/>,<t t-esc="company.state_id.name"/>-<t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>t:<t t-esc="company.phone"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.email"/> </h6>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--<div class="col-6" align="left">-->
+<!--                <h6 style="font-size:25px;"><b>VAT INVOICE</b> </h6>-->
+<!--                <h6 style="font-size:25px;"><b>فاتورة ضريبة القيمة المضافة</b> </h6>-->
+
+
+<!--&lt;!&ndash;       <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:90px;align:center;" alt="Logo"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h6 style="border: 1px solid black;&ndash;&gt;-->
+<!--&lt;!&ndash;  padding: 50px;&ndash;&gt;-->
+<!--&lt;!&ndash;  border-radius: 15px;padding:20px;">DELIVERY NOTE:<br></br>مذكرة تسليم:</h6>&ndash;&gt;-->
+
+<!--    </div>-->
+
+<!--        <div class="col-3" style="text-align:right;">-->
+<!--            <h6 style="font-size:20px;"><b>VAT #</b> </h6>-->
+<!--&lt;!&ndash;            <h6 style="font-sixe:50px;"><b>Knaled Nayef Al-Shamri General Cont.</b>  </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/>,<t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/>,<t t-esc="company.state_id.name"/>-<t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>t:<t t-esc="company.phone"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.email"/> </h6>&ndash;&gt;-->
+
+
+
+<!--        </div>-->
+<!--        <div class="col-3" style="text-align:right;">-->
+<!--            <h6 style="font-size:20px;"><b><t t-esc="company.vat"/></b> </h6>-->
+<!--&lt;!&ndash;            <h6 style="font-sixe:50px;"><b>Knaled Nayef Al-Shamri General Cont.</b>  </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/>,<t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/>,<t t-esc="company.state_id.name"/>-<t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6>t:<t t-esc="company.phone"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.email"/> </h6>&ndash;&gt;-->
+
+
+
+<!--        </div>-->
+
+<!--&lt;!&ndash;        <div class="col-6" style="text-align:right;">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.partner_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.street2"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.city"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.state_id.name"/> </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h6><t t-esc="company.zip"/> </h6>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!---->
+<!--    </div>-->
+<!--    <hr size="13" width="100%" height="70px" color="black"/>-->
+
+</div>
+<div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto">
+<div t-field="company.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+</div>
+<div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+<t t-raw="0"/>
+</div>
+<div class="footer o_background_footer">
+<div>
+<div t-field="company.report_footer"/>
+<div t-if="report_type == 'pdf'" class="text-muted">
+    <hr style="text-color:orange; width:100%;"></hr>
+<!--     <div class="row">-->
+<!--     <div class="row">-->
+<!--        <div class="col-12" style="font-size:50px;">-->
+<!--            <h6><center><b>Note :White :Customer ,Yellow :Accounting ,Green :Job File Blue:WordPad</b></center></h6>-->
+<!--                </div>-->
+<!--     </div>-->
+<!--&lt;!&ndash;         <br></br>&ndash;&gt;-->
+
+<!--            <div class="row">-->
+<!--        <div class="col-12" style="font-size:50px;">-->
+<!--            <h6><center><b>-->
+<!--            ملاحظة: أبيض: عميل ، أصفر: محاسبة ، أخضر: ملف عمل أزرق: الدفتر-->
+<!--</b></center></h6>-->
+<!--&lt;!&ndash;                        Page:&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="page"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                         /&ndash;&gt;-->
+<!--&lt;!&ndash;                 <span class="topage"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-6" style="text-align:right;">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span style="color:gray;"> Powered by Enzapps</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--</div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--     </div>-->
+</div>
+</div>
+</div>
+    </t>
+    </template>
+<template id="invoice_format_view4">
+    		<t t-call="web.html_container">
+    	    	<t t-foreach="docs" t-as="o">
+            <t t-call="sbm_e_invoice.invoice_format_layout">
+<!--                <link rel="stylesheet" href="sbm/static/src/css/style.css"/>-->
+                <div class="page">
+                                   <div class="row">
+         <div class="col-5" style="text-align:left;">
+<!--            <h6>Customer Name:-->
+
+<!-- </h6>-->
+<!--             <h6>Address:-->
+
+
+<!-- </h6>-->
+             <br></br>
+             <br></br>
+             <br></br>
+              <h6 style="color:#974715;">رقم ضريبة القيمة المضافة للمؤسسة:<t t-esc="o.company_id.vat"/>
+
+
+
+ </h6>
+         </div>
+                                                                     <div class="col-2" style="text-align:center;">
+                                                                                                  <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.testing(), 200, 200)" style="width:100px;height:100px" />
+                                                                     </div>
+
+
+                              <div class="col-5" style="text-align:right;">
+            <h6 style="color:#974715;font-size:30px;">
+<b>INVOICE - فاتورة   </b>
+
+
+
+ </h6>
+                                  <h6 style="font-size:20px;"> <t t-esc="o.invoice_date"/> :  Date-تاريخ الإصدار
+
+
+
+
+
+ </h6>
+                                  <h6 style="font-size:20px;direction-rtl;">رقم الفاتورة-Invoice Number :<t t-esc="o.name"/>
+
+
+
+
+
+
+ </h6>
+
+<!--             <h6>عنوان:-->
+
+
+
+<!-- </h6>-->
+<!--             <br></br>-->
+<!--             <br></br>-->
+<!--             <br></br>-->
+<!--              <h6>الرقم  بضريبه القيمه المضافه:-->
+<!--              </h6>-->
+                              </div>
+                       </div>
+
+                     <hr style="width: 100%;
+        height: 0.5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color:#8B4513;"/>
+                       <div class="row">
+         <div class="col-6" style="text-align:left;">
+            <h6>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer Name:<t t-esc="o.partner_id.name"/>
+
+ </h6>
+             <h6>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Address:<t t-esc="o.partner_id.street"/><t t-esc="o.partner_id.street2"/><t t-esc="o.partner_id.city"/>
+
+
+ </h6>
+             <br></br>
+             <br></br>
+             <br></br>
+              <h6>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer VAT #:<t t-esc="o.partner_id.vat"/>
+
+
+ </h6>
+         </div>
+                              <div class="col-6" style="text-align:right;">
+            <h6 style="color:#974715;">اسم الزبون
+                :<t t-esc="o.partner_id.ar_name"/>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+
+
+ </h6>
+             <h6 style="color:#974715;">تبوك
+                 :<t t-esc="o.partner_id.street"/><t t-esc="o.partner_id.ar_street2"/>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+
+
+
+ </h6>
+             <br></br>
+             <br></br>
+             <br></br>
+              <h6 style="color:#974715;">ضريبة القيمة المضافة للعميل #
+                  :<t t-esc="o.partner_id.ar_tax_id"/>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+              </h6>
+                              </div>
+                       </div>
+
+
+<!-- </h6>-->
+                                <table style="width:100%;">
+<!--                                    <thead>-->
+                                    <tr style="height:20px;background-color:#984815;color:#ffffff;">
+                                    <td colspan="1" style="border: 1px solid black;">رقم أمر العمل</td>
+                                    <td colspan="1" style="border: 1px solid black;">مكان التوريد</td>
+                                    <td colspan="1" style="border: 1px solid black;">تاريخ التوريد</td>
+                                    <td colspan="1" style="border: 1px solid black;">شروط الدفع</td>
+                                    <td colspan="1" style="border: 1px solid black;">تاريخ الاستحقاق</td>
+                                    <td colspan="4" style="border: 1px solid black;">رقم طلب الشراء</td>
+                                    </tr>
+                                    <tr style="height:20px;background-color:#984815;color:#ffffff;">
+                                    <td colspan="1" style="border: 1px solid black;">SBS Work Order #</td>
+                                    <td colspan="1" style="border: 1px solid black;">Place of supply</td>
+                                    <td colspan="1" style="border: 1px solid black;">Date of supply</td>
+                                    <td colspan="1" style="border: 1px solid black;">Payment Terms
+</td>
+                                    <td colspan="1" style="border: 1px solid black;">Due Date
+</td>
+                                    <td colspan="4" style="border: 1px solid black;">Purchase Order Number</td>
+                                    </tr>
+                                    <tr style="height:20px;">
+
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.work_order"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.place_of_supply"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.date_of_supply"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.invoice_payment_term_id.name"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.invoice_date_due"/></center></td>
+                                    <td colspan="4" style="border: 1px solid black;"><center><t t-esc="o.po_number"/></center></td>
+                                    </tr>
+                                    <tr style="height:20px;">
+                                    <td colspan="1" style="border: 1px solid black;background-color:#984815;color:#ffffff;">Delivery Note No.</td>
+                                    <td colspan="5" style="border: 1px solid black;border-right:0px;">
+                                        <center>
+                                            <t t-esc="o.delivery_no"/>
+                                        </center>
+                                    </td>
+<!--                                    <td colspan="1" style="border: 1px solid black;-->
+<!--border-right:0px;border-left:0px;"></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;-->
+<!--border-right:0px;border-left:0px;"></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;-->
+<!--border-right:0px;border-left:0px;"></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;-->
+<!--border-right:0px;border-left:0px;"></td>-->
+                                    <td colspan="1"></td>
+<!--                                    <td colspan="1"></td>-->
+                                    <td colspan="2" style="border: 1px solid black;text-align:right;background-color:#984815;color:#ffffff;">رقم مذكرة التسليم:</td>
+                                    </tr>
+                                    <tr style="height:25px;background-color:#984815;color:#ffffff;">
+                                    <td colspan="1" style="border: 1px solid black;">رقم تسلسلي</td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>وصف السلعة</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>وحدة</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>كمية</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>سعر الوحدة (ر.س)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>المبلغ الإجمالي</center><center>بدون ضريبة القيمة المضافة</center><center>(ر.س)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>ضريبة القيمة</center><center>المضافة٪</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>قيمة الضريبة</center><center>(ر.س)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>اجمالي
+                                        (ر.س)</center></td>
+                                    </tr>
+                                    <tr style="height:25px;background-color:#984815;color:#ffffff;">
+                                        <td colspan="1" style="border: 1px solid black;"><center>S.L NO.</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Item Description</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Unit</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>QTY</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Unit Price (SAR)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Total Amount </center><center>Without VAT</center><center>(SAR)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>VAT %</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>VAT Amount</center><center>(SAR)</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Total SAR</center></td>
+                                    </tr>
+                                                                <t t-set="i" t-value="1"/>
+
+                                                                                <t t-foreach="o.invoice_line_ids" t-as="docs">
+
+                                    <tr style="height:20px;">
+                                        <td colspan="1" style="border: 1px solid black;"><center><t t-esc="i"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.name"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center>Unit</center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.quantity"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.price_unit"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.price_subtotal"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.tax_ids.name"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.compute_amount_tax()"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="docs.compute_amount_total()"/></center></td>
+                                    </tr>
+                                                                                                                                             <t t-set="i" t-value="i+1"/>
+
+                                                                                </t>
+                                    <tr style="height:20px;">
+                                        <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><b>******Description End******</b></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>
+                                    </tr>
+                                    <tr style="height:20px;">
+                                        <td colspan="4" style="border: 1px solid black;"><center>In Words : <t t-esc="o.amount_words()"/></center></td>
+                                    <td colspan="1" style="border: 1px solid black;border-right:0px;text-align:right;">Sub Total (Excl. VAT)</td>
+                                    <td colspan="3" style="border: 1px solid black;border-right:0px;border-left:0px;text-align:right;">اجمالي بدون ضريبة</td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.amount_untaxed"/></center></td>
+<!--                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;"><center></center></td>-->
+<!--                                    <td colspan="1" style="border: 1px solid black;"><center></center><br></br></td>-->
+                                    </tr>
+                                    <tr style="height:20px;">
+                                          <td colspan="4" style="border: 1px solid black;border-left:0px;border-bottom:0px;border-top:0px;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;border-right:0px;text-align:right;">Disc.</td>
+                                    <td colspan="3" style="border: 1px solid black;border-right:0px;border-left:0px;text-align:right;">خصم</td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.calculate_discount()"/></center></td>
+
+                                    </tr>
+                                    <tr style="height:20px;">
+                                          <td colspan="4" style="border: 1px solid black;border-left:0px;border-bottom:0px;border-top:0px;"><center>
+</center></td>
+                                    <td colspan="1" style="border: 1px solid black;border-right:0px;text-align:right;">Total VAT 15%</td>
+                                    <td colspan="3" style="border: 1px solid black;border-right:0px;border-left:0px;text-align:right;">ضريبة القيمة المضافة %15</td>
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.amount_tax"/></center></td>
+
+                                    </tr>
+                                    <tr style="height:20px;">
+                                           <td colspan="4" style="border: 1px solid black;border-right:0px;border-bottom:0px;border-top:0px;border-left:0px;"><center></center></td>
+                                    <td colspan="1" style="border: 1px solid black;border-right:0px;text-align:right;"><b>Total
+</b></td>
+                                    <td colspan="3" style="border: 1px solid black;border-right:0px;border-left:0px;text-align:right;">الاجمالي
+                                    </td>
+
+                                    <td colspan="1" style="border: 1px solid black;"><center><t t-esc="o.amount_total"/>
+</center></td>
+
+                                    </tr>
+                                    <tr style="height:20px;">
+                                           <td colspan="4" style="border: 1px solid black;border-right:0px;border-left:0px;border-bottom:0px;border-top:0px;"><center></center></td>
+                                        <td colspan="1" style="border: 1px solid black;border-right:0px;border-left:0px;border-bottom:0px;border-top:0px;"></td>
+
+
+
+                                    <td colspan="3" style="border: 1px solid black;border-right:0px;border-left:0px;border-bottom:0px;border-top:0px;text-align:right;"><b>لمبلغ  بالحروف:</b>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    </td>
+
+                                    <td colspan="1" style="border: 1px solid black;border-right:0px;border-left:0px;border-bottom:0px;border-top:0px;"><center>
+</center></td>
+
+                                    </tr>
+<!--                                </thead>-->
+                                </table>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <div class="row">
+         <div class="col-4" style="text-align:left;">
+            <h6>أُعدت بواسطة
+                Prepared By
+ </h6>
+              <hr style="width: 120%;
+        height: 0.5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color:#8B4513;"/>
+             <h6>قسم الحسابات
+                 Accounts Department
+
+
+
+ </h6>
+             <h6><b>Salman Binsaleh Industrial Services
+</b>
+ </h6>
+         </div>
+                                        <div class="col-3" style="text-align:center;">
+                                        </div>
+                <div class="col-5" style="text-align:right;">
+                    <br></br>
+            <h6 style="text-align:right;"> تم الاستلام
+                Received By
+
+ </h6>
+              <hr style="width: 160%;
+        height: 0.5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color:#8B4513;"/>
+<!--             <h6>قسم الحسابات  Accounts Department-->
+
+<!-- </h6>-->
+<!--             <h6><b>Salman Binsaleh Industrial Services-->
+<!--</b>-->
+<!-- </h6>-->
+
+
+                </div>
+<!--                                        <div class="col-2" style="text-align:center;">-->
+<!--                                        </div>-->
+                    </div>
+                </div>
+            </t>
+                </t>
+            </t>
+</template>
+
+</odoo>

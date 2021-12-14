@@ -1,0 +1,39 @@
+.styled-table {
+    border: 1px solid black;
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+
+    margin: 25px 0;
+    font-size: 30px;
+
+
+    text-align: left;
+
+
+     font-weight: bold;
+    color: Tomato;
+    font-family: sans-serif;
+    min-width: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    align:left;
+    padding-right: 120px;"
+
+}
+th, td {
+   padding-top: 100px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 100px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    align:left;
+    padding-right: 120px;"
+}
